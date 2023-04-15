@@ -2,6 +2,11 @@ abstract class lambda<K, V> {
     abstract V f(K arg);
 }
 
+enum Event {
+    onClicked, onKeyTyped, onKeyPressed, onKeyReleaseed,
+    onDragged, onMouseMoved, onMousePressed, onMouseReleased, onMouseWheel
+}
+
 interface View {
     abstract public void draw();
 }
