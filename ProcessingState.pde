@@ -1,33 +1,24 @@
-abstract class lambda<K, V> {
-    abstract V f(K arg);
-}
-
-enum Event {
-    onClicked, onKeyTyped, onKeyPressed, onKeyReleaseed,
-    onDragged, onMouseMoved, onMousePressed, onMouseReleased, onMouseWheel
-}
-
-interface View {
-    abstract public void draw();
-}
-
-abstract class AbstractView implements View {
-    abstract public void draw();
-}
-
-abstract class AbstractActionableView extends AbstractView {
-    abstract public void draw();
-}
-
-// abstract class View {
-//     float xPadding, yPadding; // Padding from the top-left corner of the parent
-//     abstract void draw();
-// }
+RootView rootView;
 
 void setup() {
-
+    size(1280, 720);
+    textSize(48);
+    rootView = new RootView();
 }
 
 void draw() {
-
+    background(50);
+    rootView.onEvent(Event.newFrame);
+    
+    rootView.draw();
 }
+
+void keyPressed() { rootView.onEvent(Event.onKeyPressed); }
+void keyReleased() { rootView.onEvent(Event.onKeyReleaseed); }
+void keyTyped() { rootView.onEvent(Event.onKeyTyped); }
+void mouseClicked() { rootView.onEvent(Event.onClicked); }
+void mouseDragged() { rootView.onEvent(Event.onDragged); }
+void mouseMoved() { rootView.onEvent(Event.onMouseMoved); }
+void mousePressed() { rootView.onEvent(Event.onMousePressed); }
+void mouseReleased() { rootView.onEvent(Event.onMouseReleased); }
+void mouseWheel() { rootView.onEvent(Event.onMouseWheel); }
